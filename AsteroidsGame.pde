@@ -1,12 +1,18 @@
-//your variable declarations here
 Spaceship lex = new Spaceship();
 Star[] bob = new Star[60];
+ArrayList <Asteroid> bro = new ArrayList <Asteroid>();
+int numBro = 5;
+
 public void setup() 
 {
   size(500,500);
   for (int i = 0; i<bob.length; i++)
   {
     bob[i] = new Star();
+  }
+  for (int i = 0; i<numBro; i++)
+  {
+    bro.add(new Asteroid());
   }
 }
 public void draw() 
@@ -17,6 +23,19 @@ public void draw()
   for (int i = 0; i<bob.length; i++)
   {
     bob[i].show();
+  }
+  for (int i = 0; i<numBro; i++)
+  {
+    float distance = dist(bro.get(i).getX(),bro.get(i).getY(),lex.getX(),lex.getY());
+    if (distance<20)
+    {
+      bro.remove(i);
+      numBro = numBro -1;
+    }
+    else{
+    bro.get(i).show();
+    bro.get(i).move();
+    }
   }
 }
 
@@ -37,4 +56,3 @@ public void keyPressed()
      lex.setYspeed(0);
   }
 }
-
