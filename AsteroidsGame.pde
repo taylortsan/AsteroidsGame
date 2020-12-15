@@ -2,6 +2,7 @@ Spaceship lex = new Spaceship();
 Star[] bob = new Star[60];
 ArrayList <Asteroid> bro = new ArrayList <Asteroid>();
 int numBro = 5;
+ArrayList <Bullet> shots = new ArrayList<Bullet>();
 
 public void setup() 
 {
@@ -33,11 +34,22 @@ public void draw()
       numBro = numBro -1;
     }
     else{
-    bro.get(i).show();
-    bro.get(i).move();
+      bro.get(i).show();
+      bro.get(i).move();
     }
   }
-}
+  for (int i = 0; i < shots.size(); i++)
+  { 
+    if (shots.get(i).getY() < 1 || shots.get(i).getY() > 500)
+    {
+      shots.remove(i);
+    }
+    else{
+    shots.get(i).move();
+    shots.get(i).show();
+    }
+  }
+}  
 
 public void keyPressed()
 {
@@ -54,5 +66,9 @@ public void keyPressed()
      lex.setPointDirection((int)(Math.random()*360));
      lex.setXspeed(0);
      lex.setYspeed(0);
+  }
+  else if(key == ' ')
+  {
+    shots.add(new Bullet(lex));
   }
 }
