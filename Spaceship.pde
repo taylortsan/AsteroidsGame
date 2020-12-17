@@ -49,4 +49,17 @@ class Spaceship extends Floater
     {
       myYspeed = y;
     }
+    //for bullet
+    public double getXspeed()
+    {
+      return myXspeed;
+    }
+    public double getYspeed()
+    {
+      return myYspeed;
+    }
+    public double getPoint()
+    {
+      return myPointDirection;
+    }
 }
